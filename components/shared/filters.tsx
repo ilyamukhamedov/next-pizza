@@ -41,7 +41,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
         limit={6}
         defaultItems={[
           {
-            text: "Chesse sause",
+            text: "Cheese sause",
             value: "1",
           },
           {
@@ -67,7 +67,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
         ]}
         items={[
           {
-            text: "Chesse sause",
+            text: "Cheese sause",
             value: "1",
           },
           {
@@ -89,6 +89,30 @@ export const Filters: React.FC<Props> = ({ className }) => {
           {
             text: "Tomatoes",
             value: "6",
+          },
+          {
+            text: "Chesse sause",
+            value: "7",
+          },
+          {
+            text: "Mozzarella",
+            value: "8",
+          },
+          {
+            text: "Garlic",
+            value: "9",
+          },
+          {
+            text: "Pickles",
+            value: "10",
+          },
+          {
+            text: "Red onion",
+            value: "11",
+          },
+          {
+            text: "Tomatoes",
+            value: "12",
           },
         ]}
       />
