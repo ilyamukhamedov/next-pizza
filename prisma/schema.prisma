@@ -15,6 +15,7 @@ model User {
     email    String   @unique
     password String
     role     UserRole @default(USER)
+    verified DateTime
 
     provider   String?
     providerId String?
@@ -43,7 +44,7 @@ model Product {
     name     String
     imageUrl String
 
-    ingridients Ingridient[]
+    ingredients Ingredient[]
     items       ProductItem[]
 
     category   Category @relation(fields: [categoryId], references: [id])
@@ -66,7 +67,7 @@ model ProductItem {
     productId Int
 }
 
-model Ingridient {
+model Ingredient {
     id Int @id @default(autoincrement())
 
     name     String
@@ -107,7 +108,7 @@ model CartItem {
 
     quantity Int
 
-    ingridients Ingridient[]
+    ingredients Ingredient[]
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
