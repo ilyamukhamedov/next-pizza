@@ -1,5 +1,4 @@
-import { CheckboxFiltersGroup } from "./checkbox-filters-group";
-import { FilterCheckbox } from "./filter-checkbox";
+export { SearchInput } from "./search-input";
 export { Container } from "./container";
 export { Header } from "./header";
 export { Title } from "./title";
