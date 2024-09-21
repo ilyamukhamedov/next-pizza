@@ -12,10 +12,10 @@ model User {
     id Int @id @default(autoincrement())
 
     fullName String
-    email    String   @unique
+    email    String    @unique
     password String
-    role     UserRole @default(USER)
-    verified DateTime
+    role     UserRole  @default(USER)
+    verified DateTime?
 
     provider   String?
     providerId String?
@@ -29,8 +29,7 @@ model User {
 }
 
 model Category {
-    id Int @id @default(autoincrement())
-
+    id       Int       @id @default(autoincrement())
     name     String    @unique
     products Product[]
 
@@ -85,7 +84,7 @@ model Cart {
     id Int @id @default(autoincrement())
 
     user   User? @relation(fields: [userId], references: [id])
-    userId Int   @unique
+    userId Int?  @unique
 
     items CartItem[]
 
@@ -106,7 +105,7 @@ model CartItem {
     productItem   ProductItem @relation(fields: [productItemId], references: [id])
     productItemId Int
 
-    quantity Int
+    quantity Int @default(1)
 
     ingredients Ingredient[]
 
@@ -120,7 +119,8 @@ model Order {
     user   User? @relation(fields: [userId], references: [id])
     userId Int?
 
-    token       String
+    token String
+
     totalAmount Int
     status      OrderStatus
     paymentId   String?
@@ -131,7 +131,7 @@ model Order {
     email    String
     phone    String
     address  String
-    comment  String
+    comment  String?
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
@@ -140,11 +140,10 @@ model Order {
 model VerificationCode {
     id Int @id @default(autoincrement())
 
-    user User @relation(fields: [userId], references: [id])
+    user   User @relation(fields: [userId], references: [id])
+    userId Int  @unique
 
-    userId Int @unique
-
-    code String @unique
+    code String
 
     createdAt DateTime @default(now())
 
