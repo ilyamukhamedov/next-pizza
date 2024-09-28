@@ -12,11 +12,11 @@ export const categories = [
     id: 3,
   },
   {
-    name: "Cocktails",
+    name: "Drinks",
     id: 4,
   },
   {
-    name: "Drinks",
+    name: "Deserts",
     id: 5,
   },
 ];
@@ -25,8 +25,7 @@ export const ingredients = [
   {
     name: "Cheese side",
     price: 1.6,
-    imageUrl:
-      "https://cdn.dodostatic.net/static/Img/Ingredients/99f5cb91225b4875bd06a26d2e842106.png",
+    imageUrl: "/ingredients/cheeseSide.png",
   },
   {
     name: "Spicy beef",
@@ -153,104 +152,222 @@ export const ingredients = [
 export const products = [
   {
     name: "Omelette with ham and mushrooms",
-    imageUrl:
-      "https://media.dodostatic.net/image/r:292x292/11EE7970321044479C1D1085457A36EB.webp",
+    imageUrl: "/breakfast/omelette-ham-mushrooms.png",
     categoryId: 2,
   },
   {
     name: "Omelette with pepperoni",
-    imageUrl:
-      "https://media.dodostatic.net/image/r:292x292/11EE94ECF33B0C46BA410DEC1B1DD6F8.webp",
+    imageUrl: "/breakfast/omelette-pepperoni.png",
     categoryId: 2,
   },
   {
-    name: "Latte Coffee",
-    imageUrl:
-      "https://media.dodostatic.net/image/r:292x292/11EE7D61B0C26A3F85D97A78FEEE00AD.webp",
+    name: "Omelette with cheese",
+    imageUrl: "/breakfast/omelette-cheese.png",
     categoryId: 2,
   },
   {
-    name: "Sandwich ham and cheese",
-    imageUrl:
-      "https://media.dodostatic.net/image/r:292x292/11EE796FF0059B799A17F57A9E64C725.webp",
+    name: "Omelette with bacon",
+    imageUrl: "/breakfast/omelette-bacon.png",
+    categoryId: 2,
+  },
+  {
+    name: "Dodster with ham",
+    imageUrl: "/starters/dodster-ham.avif",
+    categoryId: 2,
+  },
+  {
+    name: "Coffee Latte",
+    imageUrl: "/coffee/latte.avif",
+    categoryId: 2,
+  },
+  {
+    name: "Cappuccino",
+    imageUrl: "/coffee/cappuccino.avif",
+    categoryId: 2,
+  },
+  {
+    name: "Coffee Americano",
+    imageUrl: "/coffee/americano.avif",
+    categoryId: 2,
+  },
+  {
+    name: "Pasta with shrimps",
+    imageUrl: "/starters/pasta-shrimps.png",
     categoryId: 3,
   },
   {
-    name: "Chicken nuggets",
-    imageUrl:
-      "https://media.dodostatic.net/image/r:292x292/11EE7D618B5C7EC29350069AE9532C6E.webp",
+    name: "Danwich with ham and cheese",
+    imageUrl: "/starters/danwich-ham-cheese.avif",
     categoryId: 3,
   },
   {
-    name: "Potatoes from the oven with sauce 🌱",
-    imageUrl:
-      "https://media.dodostatic.net/image/r:292x292/11EED646A9CD324C962C6BEA78124F19.webp",
+    name: "Danwich chorizo barbecue",
+    imageUrl: "/starters/danwich-chorizo-barbecue.avif",
+    categoryId: 3,
+  },
+  {
+    name: "Pasta Carbonara",
+    imageUrl: "/starters/pasta-carbonara.avif",
+    categoryId: 3,
+  },
+  {
+    name: "Pasta with meat",
+    imageUrl: "/starters/pasta-meat.avif",
+    categoryId: 3,
+  },
+  {
+    name: "Pasta Pesto",
+    imageUrl: "/starters/pasta-pesto.avif",
+    categoryId: 3,
+  },
+  {
+    name: "Dodster extra meat",
+    imageUrl: "/starters/dodster-extra-meat.avif",
+    categoryId: 3,
+  },
+  {
+    name: "Dodster with ham",
+    imageUrl: "/starters/dodster-ham.avif",
     categoryId: 3,
   },
   {
     name: "Dodster",
-    imageUrl:
-      "https://media.dodostatic.net/image/r:292x292/11EE796F96D11392A2F6DD73599921B9.webp",
+    imageUrl: "/starters/dodster.avif",
     categoryId: 3,
   },
   {
     name: "Hot Dodster 🌶️🌶️",
-    imageUrl:
-      "https://media.dodostatic.net/image/r:292x292/11EE796FD3B594068F7A752DF8161D04.webp",
+    imageUrl: "/starters/dodster-hot.avif",
     categoryId: 3,
   },
   {
-    name: "Banana Milkshake",
-    imageUrl:
-      "https://media.dodostatic.net/image/r:292x292/11EEE20B8772A72A9B60CFB20012C185.webp",
-    categoryId: 4,
+    name: "Starter with mushrooms 🌱",
+    imageUrl: "/starters/starter-mushroom.png",
+    categoryId: 3,
   },
   {
-    name: "Caramel apple milkshake",
-    imageUrl:
-      "https://media.dodostatic.net/image/r:292x292/11EE79702E2A22E693D96133906FB1B8.webp",
-    categoryId: 4,
+    name: "Starter with cheese 🌱",
+    imageUrl: "/starters/starter-cheese.png",
+    categoryId: 3,
   },
   {
-    name: "Milkshake with Oreo cookies",
-    imageUrl:
-      "https://media.dodostatic.net/image/r:292x292/11EE796FA1F50F8F8111A399E4C1A1E3.webp",
-    categoryId: 4,
+    name: "Fries with sauce 🌱",
+    imageUrl: "/starters/small/fries-sauce.avif",
+    categoryId: 3,
   },
   {
-    name: "Classic milkshake 👶",
-    imageUrl:
-      "https://media.dodostatic.net/image/r:292x292/11EE796F93FB126693F96CB1D3E403FB.webp",
-    categoryId: 4,
+    name: "Fries 🌱",
+    imageUrl: "/starters/small/fries.avif",
+    categoryId: 3,
   },
   {
-    name: "Irish Cappuccino",
-    imageUrl:
-      "https://media.dodostatic.net/image/r:292x292/11EE7D61999EBDA59C10E216430A6093.webp",
-    categoryId: 5,
+    name: "Chicken nuggets",
+    imageUrl: "/starters/small/chicken-nuggets.avif",
+    categoryId: 3,
+  },
+  {
+    name: "Chicken bites",
+    imageUrl: "/starters/small/chicken-bites.avif",
+    categoryId: 3,
+  },
+  {
+    name: "Chicken wings",
+    imageUrl: "/starters/small/chicken-wings.avif",
+    categoryId: 3,
+  },
+  {
+    name: "Chicken wings lunchbox",
+    imageUrl: "/starters/chicken-wings-lunchbox.avif",
+    categoryId: 3,
+  },
+  {
+    name: "Chicken bites lunchbox",
+    imageUrl: "/starters/chicken-bites-lunchbox.avif",
+    categoryId: 3,
+  },
+  {
+    name: "Bavarian lunchbox",
+    imageUrl: "/starters/bavarian-lunchbox.avif",
+    categoryId: 3,
+  },
+  {
+    name: "Caesar salad",
+    imageUrl: "/starters/caesar-salad.avif",
+    categoryId: 3,
   },
   {
     name: "Caramel Cappuccino",
-    imageUrl:
-      "https://media.dodostatic.net/image/r:292x292/11EE7D61AED6B6D4BFDAD4E58D76CF56.webp",
-    categoryId: 5,
+    imageUrl: "/coffee/caramel-cappuccino.avif",
+    categoryId: 4,
   },
   {
     name: "Coconut Latte",
-    imageUrl:
-      "https://media.dodostatic.net/image/r:292x292/11EE7D61B19FA07090EE88B0ED347F42.webp",
+    imageUrl: "/coffee/coconut-latte.avif",
+    categoryId: 4,
+  },
+  {
+    name: "Coffee Americano",
+    imageUrl: "/coffee/americano.avif",
+    categoryId: 4,
+  },
+  {
+    name: "Cappuccino",
+    imageUrl: "/coffee/cappuccino.avif",
+    categoryId: 4,
+  },
+  {
+    name: "Coffee Latte",
+    imageUrl: "/coffee/latte.avif",
+    categoryId: 4,
+  },
+  {
+    name: "Coffee Latte",
+    imageUrl: "/coffee/latte.avif",
+    categoryId: 4,
+  },
+  {
+    name: "Sticks with pineapple and lingonberry",
+    imageUrl: "/deserts/sticks-pineapple-lingonberry.avif",
     categoryId: 5,
   },
   {
-    name: "Americano Coffee",
-    imageUrl:
-      "https://media.dodostatic.net/image/r:292x292/11EE7D61B044583596548A59078BBD33.webp",
+    name: "Cheesecake New York",
+    imageUrl: "/deserts/cheesecake-new-york.avif",
     categoryId: 5,
   },
   {
-    name: "Latte Coffee",
-    imageUrl:
-      "https://media.dodostatic.net/image/r:292x292/11EE7D61B0C26A3F85D97A78FEEE00AD.webp",
+    name: "Cheesecake with banana and chocolate",
+    imageUrl: "/deserts/cheesecake-banana-chocolate.avif",
+    categoryId: 5,
+  },
+  {
+    name: "Chocolate cookie",
+    imageUrl: "/deserts/chocolate-cookie.avif",
+    categoryId: 5,
+  },
+  {
+    name: "Brownie",
+    imageUrl: "/deserts/brownie.avif",
+    categoryId: 5,
+  },
+  {
+    name: "Salted caramel muffin",
+    imageUrl: "/deserts/muffin-salt-caramel.avif",
+    categoryId: 5,
+  },
+  {
+    name: "Triple chocolate muffin",
+    imageUrl: "/deserts/muffin-three-chocolate.avif",
+    categoryId: 5,
+  },
+  {
+    name: "Lingonberry rolls",
+    imageUrl: "/deserts/lingonberry-rolls.avif",
+    categoryId: 5,
+  },
+  {
+    name: "Cinnamon rolls",
+    imageUrl: "/deserts/cinnamon-rolls.avif",
     categoryId: 5,
   },
 ];

@@ -1,15 +1,30 @@
 import { Container, Filters, Title, TopBar } from "@/components/shared";
-import { ProductCard } from "@/components/shared/product-card";
 import { ProductsGroupList } from "@/components/shared/products-group-list";
+import { prisma } from "@/prisma/prisma-client";
 
-export default function Home() {
+export default async function Home() {
+  const categories = await prisma.category.findMany({
+    include: {
+      products: {
+        include: {
+          ingredients: true,
+          items: true,
+        },
+      },
+    },
+  });
+
   return (
     <>
       <Container className="mt-10">
         <Title text="All pizza" size="lg" className="font-extrabold" />
       </Container>
 
-      <TopBar />
+      <TopBar
+        categories={categories.filter(
+          (category) => category.products.length > 0
+        )}
+      />
 
       <Container className="mt-10 pb-14">
         <div className="flex gap-[80px]">
@@ -18,20 +33,17 @@ export default function Home() {
           </div>
           <div className="flex-1">
             <div className="flex flex-col gap-16">
-              <ProductsGroupList
-                title="Pizza"
-                categoryId={1}
-                items={[
-                  {
-                    id: 1,
-                    name: "Hawaiian",
-                    price: 10,
-                    imageUrl:
-                      "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
-                    items: [{ price: 5.5 }],
-                  },
-                ]}
-              />
+              {categories.map(
+                (category) =>
+                  category.products.length > 0 && (
+                    <ProductsGroupList
+                      key={category.id}
+                      title={category.name}
+                      categoryId={category.id}
+                      items={category.products}
+                    />
+                  )
+              )}
             </div>
           </div>
         </div>
