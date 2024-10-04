@@ -1,28 +1,29 @@
+import { PizzaType } from "./../shared/constants/pizza";
 import { Prisma } from "@prisma/client";
 import { categories, ingredients, products } from "./constants";
 import { prisma } from "./prisma-client";
 import { hashSync } from "bcrypt";
 
-const randomDecimalNumber = (min: number, max: number) => {
-  return Math.floor(Math.random() * (max - min) * 10 + min * 10) / 10;
-};
+// const randomDecimalNumber = (min: number, max: number) => {
+//   return Math.floor(Math.random() * (max - min) * 10 + min * 10) / 10;
+// };
 
-const generateProductItem = ({
-  productId,
-  pizzaType,
-  size,
-}: {
-  productId: number;
-  pizzaType?: 1 | 2;
-  size?: 25 | 30 | 35;
-}) => {
-  return {
-    productId,
-    price: randomDecimalNumber(190, 600),
-    pizzaType,
-    size,
-  } as Prisma.ProductItemUncheckedCreateInput;
-};
+// const generateProductItem = ({
+//   productId,
+//   pizzaType,
+//   size,
+// }: {
+//   productId: number;
+//   pizzaType?: 1 | 2;
+//   size?: 25 | 30 | 35;
+// }) => {
+//   return {
+//     productId,
+//     price: randomDecimalNumber(190, 600),
+//     pizzaType,
+//     size,
+//   } as Prisma.ProductItemUncheckedCreateInput;
+// };
 
 async function up() {
   await prisma.user.createMany({
@@ -52,8 +53,12 @@ async function up() {
     data: ingredients,
   });
 
+  // await prisma.product.createMany({
+  //   data: products,
+  // });
+
   await prisma.product.createMany({
-    data: products,
+    data: products.map((product, index) => ({ id: index + 1, ...product })),
   });
 
   const pizza1 = await prisma.product.create({
@@ -62,7 +67,7 @@ async function up() {
       imageUrl: "/pizza/fluffy/big/cheese.avif",
       categoryId: 1,
       ingredients: {
-        connect: ingredients.slice(0, 5),
+        connect: ingredients,
       },
     },
   });
@@ -73,7 +78,7 @@ async function up() {
       imageUrl: "/pizza/fluffy/big/pepperoni.avif",
       categoryId: 1,
       ingredients: {
-        connect: ingredients.slice(5, 10),
+        connect: ingredients,
       },
     },
   });
@@ -84,7 +89,7 @@ async function up() {
       imageUrl: "/pizza/fluffy/big/chorizo-fresh.avif",
       categoryId: 1,
       ingredients: {
-        connect: ingredients.slice(10, 40),
+        connect: ingredients,
       },
     },
   });
@@ -92,47 +97,74 @@ async function up() {
   await prisma.productItem.createMany({
     data: [
       // cheese
-      generateProductItem({ productId: pizza1.id, pizzaType: 1, size: 25 }),
-      generateProductItem({ productId: pizza1.id, pizzaType: 1, size: 30 }),
-      generateProductItem({ productId: pizza1.id, pizzaType: 1, size: 35 }),
-      generateProductItem({ productId: pizza1.id, pizzaType: 2, size: 25 }),
-      generateProductItem({ productId: pizza1.id, pizzaType: 2, size: 30 }),
-      generateProductItem({ productId: pizza1.id, pizzaType: 2, size: 35 }),
+      { productId: pizza1.id, pizzaType: 1, price: 5, size: 25 },
+      { productId: pizza1.id, pizzaType: 1, price: 7, size: 30 },
+      { productId: pizza1.id, pizzaType: 1, price: 10, size: 35 },
+      { productId: pizza1.id, pizzaType: 2, price: 5, size: 25 },
+      { productId: pizza1.id, pizzaType: 2, price: 7, size: 30 },
+      { productId: pizza1.id, pizzaType: 2, price: 10, size: 35 },
 
       // pepperoni
-      generateProductItem({ productId: pizza2.id, pizzaType: 1, size: 25 }),
-      generateProductItem({ productId: pizza2.id, pizzaType: 1, size: 30 }),
-      generateProductItem({ productId: pizza2.id, pizzaType: 1, size: 35 }),
-      generateProductItem({ productId: pizza2.id, pizzaType: 2, size: 25 }),
-      generateProductItem({ productId: pizza2.id, pizzaType: 2, size: 30 }),
-      generateProductItem({ productId: pizza2.id, pizzaType: 2, size: 35 }),
+      { productId: pizza2.id, pizzaType: 1, price: 5, size: 25 },
+      { productId: pizza2.id, pizzaType: 1, price: 7, size: 30 },
+      { productId: pizza2.id, pizzaType: 1, price: 10, size: 35 },
+      { productId: pizza2.id, pizzaType: 2, price: 5, size: 25 },
+      { productId: pizza2.id, pizzaType: 2, price: 7, size: 30 },
+      { productId: pizza2.id, pizzaType: 2, price: 10, size: 35 },
 
       // chorizo fresh
-      generateProductItem({ productId: pizza3.id, pizzaType: 1, size: 25 }),
-      generateProductItem({ productId: pizza3.id, pizzaType: 1, size: 30 }),
-      generateProductItem({ productId: pizza3.id, pizzaType: 1, size: 35 }),
-      generateProductItem({ productId: pizza3.id, pizzaType: 2, size: 25 }),
-      generateProductItem({ productId: pizza3.id, pizzaType: 2, size: 30 }),
-      generateProductItem({ productId: pizza3.id, pizzaType: 2, size: 35 }),
+      { productId: pizza3.id, pizzaType: 1, price: 5, size: 25 },
+      { productId: pizza3.id, pizzaType: 1, price: 7, size: 30 },
+      { productId: pizza3.id, pizzaType: 1, price: 10, size: 35 },
+      { productId: pizza3.id, pizzaType: 2, price: 5, size: 25 },
+      { productId: pizza3.id, pizzaType: 2, price: 7, size: 30 },
+      { productId: pizza3.id, pizzaType: 2, price: 10, size: 35 },
 
       // others products
-      generateProductItem({ productId: 1 }),
-      generateProductItem({ productId: 2 }),
-      generateProductItem({ productId: 3 }),
-      generateProductItem({ productId: 4 }),
-      generateProductItem({ productId: 5 }),
-      generateProductItem({ productId: 6 }),
-      generateProductItem({ productId: 7 }),
-      generateProductItem({ productId: 8 }),
-      generateProductItem({ productId: 9 }),
-      generateProductItem({ productId: 10 }),
-      generateProductItem({ productId: 11 }),
-      generateProductItem({ productId: 12 }),
-      generateProductItem({ productId: 13 }),
-      generateProductItem({ productId: 14 }),
-      generateProductItem({ productId: 15 }),
-      generateProductItem({ productId: 16 }),
-      generateProductItem({ productId: 17 }),
+      { productId: 1, price: 2.5 },
+      { productId: 2, price: 2.5 },
+      { productId: 3, price: 2.5 },
+      { productId: 4, price: 2.5 },
+      { productId: 5, price: 2.5 },
+      { productId: 6, price: 3 },
+      { productId: 7, price: 3 },
+      { productId: 8, price: 2.5 },
+      { productId: 9, price: 4.5 },
+      { productId: 10, price: 3.5 },
+      { productId: 11, price: 3.5 },
+      { productId: 12, price: 4.5 },
+      { productId: 13, price: 4.5 },
+      { productId: 14, price: 4.5 },
+      { productId: 15, price: 2.5 },
+      { productId: 16, price: 2.5 },
+      { productId: 17, price: 2.5 },
+      { productId: 18, price: 2.5 },
+      { productId: 19, price: 2.5 },
+      { productId: 20, price: 2.5 },
+      { productId: 21, price: 2.5 },
+      { productId: 22, price: 2 },
+      { productId: 23, price: 2 },
+      { productId: 24, price: 2 },
+      { productId: 25, price: 2 },
+      { productId: 26, price: 2 },
+      { productId: 27, price: 2 },
+      { productId: 28, price: 2 },
+      { productId: 29, price: 2 },
+      { productId: 30, price: 2 },
+      { productId: 31, price: 2 },
+      { productId: 32, price: 2 },
+      { productId: 33, price: 2 },
+      { productId: 34, price: 2 },
+      { productId: 35, price: 2 },
+      { productId: 36, price: 2 },
+      { productId: 37, price: 2 },
+      { productId: 38, price: 2 },
+      { productId: 39, price: 2 },
+      { productId: 40, price: 2 },
+      { productId: 41, price: 2 },
+      { productId: 42, price: 2 },
+      { productId: 43, price: 2 },
+      { productId: 44, price: 2 },
     ],
   });
 
