@@ -1,6 +1,6 @@
 import { PizzaType } from "./../shared/constants/pizza";
 import { Prisma } from "@prisma/client";
-import { categories, ingredients, products } from "./constants";
+import { categories, _ingredients, products } from "./constants";
 import { prisma } from "./prisma-client";
 import { hashSync } from "bcrypt";
 
@@ -50,7 +50,7 @@ async function up() {
   });
 
   await prisma.ingredient.createMany({
-    data: ingredients,
+    data: _ingredients,
   });
 
   // await prisma.product.createMany({
@@ -67,7 +67,7 @@ async function up() {
       imageUrl: "/pizza/fluffy/big/cheese.avif",
       categoryId: 1,
       ingredients: {
-        connect: ingredients,
+        connect: _ingredients,
       },
     },
   });
@@ -78,7 +78,7 @@ async function up() {
       imageUrl: "/pizza/fluffy/big/pepperoni.avif",
       categoryId: 1,
       ingredients: {
-        connect: ingredients,
+        connect: _ingredients,
       },
     },
   });
@@ -89,7 +89,7 @@ async function up() {
       imageUrl: "/pizza/fluffy/big/chorizo-fresh.avif",
       categoryId: 1,
       ingredients: {
-        connect: ingredients,
+        connect: _ingredients,
       },
     },
   });
