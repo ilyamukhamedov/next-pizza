@@ -100,7 +100,6 @@ async function up() {
       { productId: pizza1.id, pizzaType: 1, price: 5, size: 25 },
       { productId: pizza1.id, pizzaType: 1, price: 7, size: 30 },
       { productId: pizza1.id, pizzaType: 1, price: 10, size: 35 },
-      { productId: pizza1.id, pizzaType: 2, price: 5, size: 25 },
       { productId: pizza1.id, pizzaType: 2, price: 7, size: 30 },
       { productId: pizza1.id, pizzaType: 2, price: 10, size: 35 },
 
@@ -108,7 +107,6 @@ async function up() {
       { productId: pizza2.id, pizzaType: 1, price: 5, size: 25 },
       { productId: pizza2.id, pizzaType: 1, price: 7, size: 30 },
       { productId: pizza2.id, pizzaType: 1, price: 10, size: 35 },
-      { productId: pizza2.id, pizzaType: 2, price: 5, size: 25 },
       { productId: pizza2.id, pizzaType: 2, price: 7, size: 30 },
       { productId: pizza2.id, pizzaType: 2, price: 10, size: 35 },
 
@@ -116,7 +114,6 @@ async function up() {
       { productId: pizza3.id, pizzaType: 1, price: 5, size: 25 },
       { productId: pizza3.id, pizzaType: 1, price: 7, size: 30 },
       { productId: pizza3.id, pizzaType: 1, price: 10, size: 35 },
-      { productId: pizza3.id, pizzaType: 2, price: 5, size: 25 },
       { productId: pizza3.id, pizzaType: 2, price: 7, size: 30 },
       { productId: pizza3.id, pizzaType: 2, price: 10, size: 35 },
 
