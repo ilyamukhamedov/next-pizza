@@ -9,7 +9,7 @@ import { ChooseProductForm } from "./choose-product-form";
 
 interface Props {
   product: ProductWithRelations;
-  onSubmit: VoidFunction;
+  onSubmit?: VoidFunction;
   className?: string;
 }
 

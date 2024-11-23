@@ -21,32 +21,14 @@ import { CartDrawerItem } from "./cart-drawer-item";
 import { PizzaType, PizzaSize } from "@/shared/constants/pizza";
 import { Title } from "./title";
 import { cn } from "@/shared/lib/utils";
+import { useCart } from "@/shared/hooks";
 interface Props {
   className?: string;
 }
 
-export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
-  children,
-  className,
-}) => {
-  const [
-    totalAmount,
-    items,
-    fetchCartItems,
-    updateItemQuantity,
-    removeCartItem,
-  ] = useCartStore((state) => [
-    state.totalAmount,
-    state.items,
-    state.fetchCartItems,
-    state.updateItemQuantity,
-    state.removeCartItem,
-  ]);
-
-  React.useEffect(() => {
-    fetchCartItems();
-  }, []);
-
+export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
+  const { totalAmount, updateItemQuantity, items, removeCartItem } = useCart();
+  const [redirecting, setRedirecting] = React.useState(false);
   const onClickCountButton = (
     id: number,
     quantity: number,
@@ -113,9 +95,9 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
                       details={
                         item.pizzaSize && item.pizzaType
                           ? getCartItemDetails(
+                              item.ingredients,
                               item.pizzaType as PizzaType,
-                              item.pizzaSize as PizzaSize,
-                              item.ingredients
+                              item.pizzaSize as PizzaSize
                             )
                           : ""
                       }
@@ -144,7 +126,12 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
                   </div>
 
                   <Link href="/checkout">
-                    <Button type="submit" className="w-full h-12 text-base">
+                    <Button
+                      onClick={() => setRedirecting(true)}
+                      loading={redirecting}
+                      type="submit"
+                      className="w-full h-12 text-base"
+                    >
                       Checkout
                       <ArrowRight className="w-5 ml-2" />
                     </Button>
